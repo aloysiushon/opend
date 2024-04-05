@@ -23,7 +23,7 @@ function Item(props) {
 
     const name = await NFTActor.getName();
     const owner = await NFTActor.getOwner();
-
+    //To set image
     const imageData = await NFTActor.getAsset();
     const imageContent = new Uint8Array(imageData);
     const image = URL.createObjectURL(new Blob([imageContent.buffer], {type: "image/png"}));
@@ -31,7 +31,6 @@ function Item(props) {
 
     setName(name);
     setOwner(owner.toText());
-
 
   };
 
