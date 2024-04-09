@@ -6,6 +6,7 @@ import { Principal } from "@dfinity/principal";
 import { opend } from "../../../declarations/opend";
 import Button from "./Button";
 import CURRENT_USER_ID from "../index";
+import PriceLabel from "./PriceLabel";
 
 function Item(props) {
   const [name, setName] = useState();
@@ -45,6 +46,8 @@ function Item(props) {
     setOwner(owner.toText());
     setImage(image);
 
+
+    if (props.role == "collection") {
       const nftIsListed = await opend.isListed(props.id);
 
       if (nftIsListed) {
@@ -54,6 +57,14 @@ function Item(props) {
       } else {
         setButton(<Button handleClick={handleSell} text={"Sell"} />);
       }
+    } else if (props.role == "discover") {
+      const originalOwner = await opend.getOriginalOwner(props.id);
+      if (originalOwner.toText() != CURRENT_USER_ID.toText()) {
+        setButton(<Button handleClick={handleBuy} text={"Buy"} />);
+      }
+      const price = await opend.getListedNFTPrice(props.id);
+      setPriceLabel(<PriceLabel sellPrice={price.toString()}/>);
+    }
   }
 
   useEffect(() => {
