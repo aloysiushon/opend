@@ -107,7 +107,7 @@ dfx canister call opend mint '(vec {137; 80; 78; 71; 13; 10; 26; 10; 0; 0; 0; 13
 2. List the item into mapOfListings:
 
 ```
-dfx canister call opend listItem '(principal "w6ozc-gaaaa-aaaaa-aaarq-cai", 2)'
+dfx canister call opend listItem '(principal "x2dwq-7aaaa-aaaaa-aaaxq-cai", 2)'
 ```
 
 3. Get OpenD canister ID:
@@ -119,7 +119,7 @@ dfx canister id opend
 4. Transfer NFT to OpenD:
 
 ```
-dfx canister call w6ozc-gaaaa-aaaaa-aaarq-cai transferOwnership '(principal "ryjl3-tyaaa-aaaaa-aaaba-cai", true)'
+dfx canister call x2dwq-7aaaa-aaaaa-aaaxq-cai transferOwnership '(principal "ryjl3-tyaaa-aaaaa-aaaba-cai", true)'
 ```
 
 # Conneting to the Token Canister
